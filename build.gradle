@@ -1,0 +1,24 @@
+plugins {
+    id 'org.kordamp.gradle.project' version '0.20.0'
+}
+
+config {
+    info {
+        name = 'property-based-testing'
+        vendor = 'paulk-asert'
+        description = 'Examples of Property-based Testing mostly using Groovy'
+        links {
+            website      = 'https://github.com/paulk-asert/property-based-testing'
+            issueTracker = 'https://github.com/paulk-asert/property-based-testing/issues'
+            scm          = 'https://github.com/paulk-asert/property-based-testing.git'
+        }
+    }
+
+    licensing {
+        licenses {
+            license {
+                id = 'Apache-2.0'
+            }
+        }
+    }
+}
