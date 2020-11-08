@@ -57,7 +57,7 @@ class MathUtilTest {
 
     @Property
     void checkIntegerWithLongCalculations(@ForAll Integer a, @ForAll Integer b, @ForAll Integer c) {
-        def (al, bl, cl) = [a.toLong(), b.toLong(), c.toLong()]
+        def (al, bl, cl) = [a, b, c]*.toLong()
         assert sumBiggestPair(a, b, c) == [al+bl, al+cl, bl+cl].max().toInteger()
     }
 }
