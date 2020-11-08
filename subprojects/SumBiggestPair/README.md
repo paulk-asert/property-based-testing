@@ -4,7 +4,7 @@
 
 Run the test scripts in your IDE or invoke the following `gradle` tasks:
 
-<details class="tab">
+<details open class="tab">
 <summary>Linux/MacOS</summary>
 
 ```
