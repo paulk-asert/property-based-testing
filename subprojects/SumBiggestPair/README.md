@@ -1,20 +1,23 @@
 # Example-based testing of a math method
 
-## Instructions {.tabset}
+## Instructions
 
-Invoke the following `gradle` tasks:
+Run the test scripts in your IDE or invoke the following `gradle` tasks:
 
-### Windows
-
-```
-> gradlew SumBiggestPair:test SumBiggestPair:jacocoTestReport
-```
-
-### Linux/MacOS
+<details class="tab">
+<summary>Linux/MacOS</summary>
 
 ```
 $ ./gradlew SumBiggestPair:test SumBiggestPair:jacocoTestReport
 ```
+</details>
+<details class="tab">
+<summary>Windows</summary>
+
+```
+> gradlew SumBiggestPair:test SumBiggestPair:jacocoTestReport
+```
+</details>
 
 ## Result
 
