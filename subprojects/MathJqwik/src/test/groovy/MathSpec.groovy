@@ -65,6 +65,11 @@ class MathSpec {
     }
 
     @Property
+    def "subtraction and addition are inverse functions"(@ForAll Integer a, @ForAll Integer b) {
+        assert a + b - b == a
+    }
+
+    @Property
     def "addition is associative for integer"(@ForAll Integer a, @ForAll Integer b, @ForAll Integer c) {
         assert (a + b) + c == a + (b + c)
     }
@@ -78,5 +83,10 @@ class MathSpec {
     @Property
     def "subtracting any integer from itself gives zero"(@ForAll Integer a) {
         assert a - a == 0
+    }
+
+    @Property
+    def "abs is idempotent"(@ForAll Integer i) {
+        assert i.abs() == i.abs().abs()
     }
 }

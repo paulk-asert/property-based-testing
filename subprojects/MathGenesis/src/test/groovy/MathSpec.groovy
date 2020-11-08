@@ -84,6 +84,15 @@ class MathSpec extends Specification {
     }
 
     @Iterations(10)
+    def "subtraction and addition are inverse functions"() {
+        expect:
+        a + b - b == a
+        where:
+        a << Gen.integer
+        b << Gen.integer
+    }
+
+    @Iterations(10)
     def "addition is associative for integer"() {
         expect:
         (a + b) + c == a + (b + c)
@@ -108,5 +117,13 @@ class MathSpec extends Specification {
         a - a == 0
         where:
         a << Gen.integer
+    }
+
+    @Iterations(10)
+    def "abs is idempotent"() {
+        expect:
+        i.abs() == i.abs().abs()
+        where:
+        i << Gen.integer
     }
 }
