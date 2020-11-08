@@ -1,16 +1,27 @@
 plugins {
-    id 'org.kordamp.gradle.project' version '0.20.0'
+    id 'org.kordamp.gradle.project' version '0.41.0'
+    id "org.kordamp.gradle.jacoco" version "0.41.0"
 }
+//apply plugin: 'idea'
 
 config {
     info {
         name = 'property-based-testing'
-        vendor = 'paulk-asert'
+        inceptionYear = '2019'
+        vendor = 'groovycookbook.org'
         description = 'Examples of Property-based Testing mostly using Groovy'
         links {
             website      = 'https://github.com/paulk-asert/property-based-testing'
             issueTracker = 'https://github.com/paulk-asert/property-based-testing/issues'
             scm          = 'https://github.com/paulk-asert/property-based-testing.git'
+        }
+
+        people {
+            person {
+                id    = 'paulk-asert'
+                name  = 'Paul King'
+                roles = ['developer']
+            }
         }
     }
 
