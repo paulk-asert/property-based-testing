@@ -1,0 +1,16 @@
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation "org.codehaus.groovy:groovy-all:$groovyVersion"
+    testImplementation "net.jqwik:jqwik:$jqwikVersion"
+}
+
+test {
+    useJUnitPlatform {
+        includeEngines 'jqwik'
+    }
+}
