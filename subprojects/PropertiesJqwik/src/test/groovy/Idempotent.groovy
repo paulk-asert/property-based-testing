@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-
 import net.jqwik.api.Arbitraries
 import net.jqwik.api.Arbitrary
 import net.jqwik.api.ForAll
 import net.jqwik.api.Property
 import net.jqwik.api.Provide
 import net.jqwik.api.constraints.IntRange
-import net.jqwik.engine.properties.arbitraries.DefaultMapArbitrary
+
+import static net.jqwik.api.Arbitraries.maps
 
 // these tests pass but some values aren't as expected due to some Jsr308 limitations
 class Idempotent {
@@ -61,7 +61,7 @@ class Idempotent {
 
     @Provide
     Arbitrary<Map<String, String>> stringMap() {
-        return new DefaultMapArbitrary(Arbitraries.strings().alpha().ofMaxLength(5).unique(),
+        return maps(Arbitraries.strings().alpha().ofMaxLength(5).unique(),
                 Arbitraries.strings().ofMaxLength(5))
     }
 
