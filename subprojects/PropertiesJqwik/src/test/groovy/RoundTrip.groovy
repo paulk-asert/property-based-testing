@@ -19,7 +19,7 @@ import net.jqwik.api.Property
 class RoundTrip {
     @Property
     void 'encode then decode returns original'(@ForAll String s) {
-        def bytes = s.bytes.encodeBase64().toString().decodeBase64()
-        assert s == new String(bytes)
+        def bytes = s.getBytes('UTF-8').encodeBase64().toString().decodeBase64()
+        assert s == new String(bytes, 'UTF-8')
     }
 }
