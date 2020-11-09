@@ -16,6 +16,7 @@
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.property.*
+import io.kotest.property.arbitrary.*
 import kotlin.math.*
 
 class MathSpec: StringSpec({
