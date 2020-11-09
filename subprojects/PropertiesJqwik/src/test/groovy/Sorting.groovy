@@ -13,6 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import net.jqwik.api.Disabled
 import net.jqwik.api.ForAll
 import net.jqwik.api.Property
 import net.jqwik.api.Report
@@ -51,6 +53,7 @@ class Sorting {
 
     @Property
     @Report([Reporting.GENERATED, Reporting.FALSIFIED])
+    @Disabled('enable to show reporting')
     void 'show broken sort detected'(
             @ForAll List<@IntRange(min=0, max=100) Integer> items
     ) {
