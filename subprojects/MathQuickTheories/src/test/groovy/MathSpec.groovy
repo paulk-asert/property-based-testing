@@ -98,4 +98,18 @@ class MathSpec {
             i.abs() == i.abs().abs()
         }
     }
+
+    @Test
+    void "times two is the same as add to self"() {
+        qt().forAll(integers().all()).check { i ->
+            i * 2 == i + i
+        }
+    }
+
+    @Test
+    void "pow two is the same as multiply to self"() {
+        qt().forAll(integers().between(0, 40_000)).check { i ->
+            i**2 == i * i
+        }
+    }
 }

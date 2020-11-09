@@ -126,4 +126,20 @@ class MathSpec extends Specification {
         where:
         i << Gen.integer
     }
+
+    @Iterations(10)
+    def "times two is the same as add to self"() {
+        expect:
+        i * 2 == i + i
+        where:
+        i << Gen.integer
+    }
+
+    @Iterations(10)
+    def "pow two is the same as multiply to self"() {
+        expect:
+        i**2 == i * i
+        where:
+        i << Gen.integer(0, 40_000)
+    }
 }
