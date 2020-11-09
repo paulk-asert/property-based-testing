@@ -27,6 +27,7 @@ dependencies {
     testImplementation('com.nagternal:spock-genesis:0.6.0') {
         transitive = false
     }
+    testRuntimeOnly 'com.github.mifmif:generex:1.0.1'
     testImplementation("org.spockframework:spock-core:$spockVersion") {
         transitive = false
     }
