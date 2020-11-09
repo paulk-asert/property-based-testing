@@ -32,10 +32,13 @@ class MathSpec extends AnyPropSpec with ScalaCheckDrivenPropertyChecks {
     }
   }
 
-  // ignore degenerate case of a == b
+  // ignore degenerate case of a == b and involving MinValue
   property("subtraction is not commutative for integer") {
     forAll { (a: Int, b: Int) =>
-      whenever(a != b) { assert (a - b != b - a) }
+      whenever(a != b &&
+        !(a == 0 && b == Int.MinValue) &&
+        !(a == Int.MinValue && b == 0)
+      ) { assert (a - b != b - a) }
     }
   }
 
