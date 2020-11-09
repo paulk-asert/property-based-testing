@@ -108,6 +108,6 @@ class MathSpec {
 
     @Property
     void "pow two is the same as multiply to self"(@InRange(minInt = 0, maxInt = 40_000) int i) {
-        assert i * i == i**2
+        assert i**2 == i * i
     }
 }
