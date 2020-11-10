@@ -70,9 +70,9 @@ class Idempotent {
             @ForAll List<@IntRange(min=0, max=100) Integer> items,
             @ForAll @IntRange(max=10) Integer i
     ) {
-        def once = items.sort()
+        def once = items.toSorted()
         def many = once
-        i.times { many = many.sort() }
+        i.times { many = many.toSorted() }
         assert once == many
     }
 }
