@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation "org.codehaus.groovy:groovy-all:$groovyVersion"
+    testImplementation "org.apache.groovy:groovy-all:$groovyVersion"
     testImplementation 'com.pholser:junit-quickcheck-core:0.9.5'
     testImplementation 'com.pholser:junit-quickcheck-generators:0.9.5'
     testRuntimeOnly 'org.slf4j:slf4j-simple:1.7.30'

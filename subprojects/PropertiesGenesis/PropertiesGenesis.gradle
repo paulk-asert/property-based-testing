@@ -21,11 +21,11 @@ repositories {
 
 dependencies {
     testImplementation project(':Celsius')
-    testImplementation "org.codehaus.groovy:groovy-all:$groovyVersion"
+    testImplementation "org.apache.groovy:groovy-all:$groovyVersion"
     testImplementation('com.nagternal:spock-genesis:0.6.0') {
         transitive = false
     }
-    testRuntimeOnly 'com.github.mifmif:generex:1.0.1'
+    testRuntimeOnly 'com.github.mifmif:generex:1.0.2'
     testImplementation("org.spockframework:spock-core:$spockVersion") {
         transitive = false
     }

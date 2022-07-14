@@ -13,6 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+plugins {
+    id 'info.solidsoft.pitest' version '1.7.4'
+}
 apply plugin: 'groovy'
 
 repositories {
@@ -20,19 +23,25 @@ repositories {
 }
 
 dependencies {
-    testImplementation "org.apache.groovy:groovy-all:$groovyVersion"
-    testImplementation "org.apache.groovy:groovy-dateutil:$groovyVersion"
-    testImplementation 'net.java.quickcheck:quickcheck:0.6'
-    testImplementation 'org.quicktheories:quicktheories:0.26'
-    testImplementation('com.nagternal:spock-genesis:0.6.0') {
-        transitive = false
-    }
-    testRuntimeOnly 'com.github.mifmif:generex:1.0.2'
+    implementation "org.apache.groovy:groovy-all:$groovyVersion"
     testImplementation("org.spockframework:spock-core:$spockVersion") {
         transitive = false
     }
+//    implementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion") {
+//        exclude(group: 'org.apiguardian', module: 'apiguardian-api')
+//        exclude(group: 'org.junit.platform', module: 'junit-platform-commons')
+//    }
+//    testRuntimeOnly "org.junit.platform:junit-platform-engine:$junitPlatformVersion"
+//    testRuntimeOnly "org.junit.platform:junit-platform-launcher:$junitPlatformVersion"
 }
 
-test {
+pitest {
+    junit5PluginVersion = '0.15'
+    timestampedReports = false
+    targetClasses = ['util.*']
+//    dependsOn 'compileGroovy'
+}
+
+tasks.named('test') {
     useJUnitPlatform()
 }

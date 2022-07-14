@@ -21,7 +21,7 @@ repositories {
 
 dependencies {
     testImplementation project(':SumBiggestPair')
-    testImplementation "org.codehaus.groovy:groovy-all:$groovyVersion"
+    testImplementation "org.apache.groovy:groovy-all:$groovyVersion"
     testImplementation "net.jqwik:jqwik:$jqwikVersion"
 }
 

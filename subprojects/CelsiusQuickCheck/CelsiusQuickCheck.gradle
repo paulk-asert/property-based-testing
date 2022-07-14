@@ -21,6 +21,6 @@ repositories {
 
 dependencies {
     testImplementation project(':Celsius')
-    testImplementation "org.codehaus.groovy:groovy-all:$groovyVersion"
+    testImplementation "org.apache.groovy:groovy-all:$groovyVersion"
     testImplementation "net.java.quickcheck:quickcheck:$quickCheckVersion"
 }

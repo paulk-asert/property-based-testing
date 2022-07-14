@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    implementation "org.codehaus.groovy:groovy-all:$groovyVersion"
+    implementation "org.apache.groovy:groovy-all:$groovyVersion"
     implementation "net.jqwik:jqwik:$jqwikVersion"
 }
 

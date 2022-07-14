@@ -13,19 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-apply plugin: 'groovy'
+package util;
 
-repositories {
-    mavenCentral()
-}
+public class MathUtil {
 
-dependencies {
-    testImplementation "org.apache.groovy:groovy-all:$groovyVersion"
-    testImplementation "net.jqwik:jqwik:$jqwikVersion"
-}
-
-test {
-    useJUnitPlatform {
-        includeEngines 'jqwik'
+    public static int sumBiggestPair(int a, int b, int c) {
+        int op1 = a;
+        int op2 = b;
+        if (c > Math.min(a, b)) {
+            op1 = c;
+            op2 = Math.max(a, b);
+        }
+        return op1 + op2;
     }
+
+    private MathUtil(){}
 }

@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation "org.codehaus.groovy:groovy-all:$groovyVersion"
+    testImplementation "org.apache.groovy:groovy-all:$groovyVersion"
     testImplementation 'org.quicktheories:quicktheories:0.26'
 }
 

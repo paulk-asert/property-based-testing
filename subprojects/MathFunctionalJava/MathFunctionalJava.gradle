@@ -20,6 +20,6 @@ repositories {
 }
 
 dependencies {
-    testImplementation "org.codehaus.groovy:groovy-all:$groovyVersion"
+    testImplementation "org.apache.groovy:groovy-all:$groovyVersion"
     testImplementation 'org.functionaljava:functionaljava-quickcheck_1.8:4.8.1'
 }

@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation "org.codehaus.groovy:groovy-all:$groovyVersion"
+    testImplementation "org.apache.groovy:groovy-all:$groovyVersion"
     testImplementation('com.nagternal:spock-genesis:0.6.0') {
         transitive = false
     }
