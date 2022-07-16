@@ -13,10 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        classpath 'org.nosphere.apache:creadur-rat-gradle:0.7.1'
+    }
+}
+
 plugins {
     id 'org.kordamp.gradle.project' version '0.47.0'
     id 'com.github.ben-manes.versions' version '0.42.0'
-//    id "org.kordamp.gradle.jacoco" version "0.47.0"
+}
+
+repositories {
+    mavenCentral()
 }
 
 config {
@@ -58,11 +71,30 @@ config {
 ext.UNSTABLE = /^[0-9,.-]+[.-](alpha|beta|rc|snap|m)[.\d-]*$/
 // ignore non-stable releases
 allprojects {
+    apply plugin: 'org.nosphere.apache.rat'
     tasks.named("dependencyUpdates").configure {
         gradleReleaseChannel = 'current'
         outputFormatter = 'plain'
         rejectVersionIf {
             !(it.currentVersion.toLowerCase() ==~ UNSTABLE) && it.candidate.version.toLowerCase() ==~ UNSTABLE
+        }
+    }
+}
+
+rat {
+    inputDir = projectDir
+    excludes = ['subprojects/**', '**/.gradle/**', '**/wrapper/**', 'gradlew*', 'gradle.properties', '.idea/**', 'build/**']
+}
+subprojects { sp ->
+    rat {
+        inputDir = sp.projectDir
+        excludes = [ 'target/**', 'build/**', '.gradle/**', '*.iml', '.classpath', '.project', 'out/**', '.settings/**', 'bin/**']
+    }
+    config {
+        coverage {
+            jacoco {
+                toolVersion = '0.8.8'
+            }
         }
     }
 }
