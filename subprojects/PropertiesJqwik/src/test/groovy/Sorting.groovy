@@ -21,7 +21,6 @@ import net.jqwik.api.Report
 import net.jqwik.api.Reporting
 import net.jqwik.api.constraints.IntRange
 
-// these tests pass but some values aren't as expected due to some Jsr308 limitations
 class Sorting {
     @Property
     boolean 'sort preserves size'(

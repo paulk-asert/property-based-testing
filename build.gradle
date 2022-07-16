@@ -54,3 +54,15 @@ config {
         }
     }
 }
+
+ext.UNSTABLE = /^[0-9,.-]+[.-](alpha|beta|rc|snap|m)[.\d-]*$/
+// ignore non-stable releases
+allprojects {
+    tasks.named("dependencyUpdates").configure {
+        gradleReleaseChannel = 'current'
+        outputFormatter = 'plain'
+        rejectVersionIf {
+            !(it.currentVersion.toLowerCase() ==~ UNSTABLE) && it.candidate.version.toLowerCase() ==~ UNSTABLE
+        }
+    }
+}

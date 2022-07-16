@@ -22,12 +22,12 @@ repositories {
 }
 
 ext.scala_lib_version = '2.13'
-ext.junit_platform_version = '1.7.0'
+ext.junit_platform_version = '1.8.2'
 
 dependencies {
-    testImplementation "org.scalatest:scalatest_$scala_lib_version:3.2.3"
-    testImplementation "org.scalacheck:scalacheck_$scala_lib_version:1.15.1"
-    testImplementation "org.scalatestplus:scalacheck-1-15_$scala_lib_version:3.2.3.0"
+    testImplementation "org.scalatest:scalatest_$scala_lib_version:3.2.12"
+    testImplementation "org.scalacheck:scalacheck_$scala_lib_version:1.16.0"
+    testImplementation "org.scalatestplus:scalacheck-1-15_$scala_lib_version:3.2.11.0"
     testRuntimeOnly "org.junit.platform:junit-platform-engine:$junit_platform_version"
     testRuntimeOnly "org.junit.platform:junit-platform-launcher:$junit_platform_version"
     testRuntimeOnly "co.helmethair:scalatest-junit-runner:0.1.11"

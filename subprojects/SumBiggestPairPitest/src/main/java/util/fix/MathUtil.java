@@ -13,22 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package util
+package util.fix;
 
-import spock.lang.Specification
+public class MathUtil {
 
-class MathUtilSpec extends Specification {
-
-    def "sum of two biggest numbers"(int a, int b, int c, int d) {
-        expect:
-        MathUtil.sumBiggestPair(a, b, c) == d
-
-        where:
-        a | b | c | d
-        2 | 5 | 3 | 8
-        5 | 2 | 3 | 8  // 100% line coverage at this point
-        5 | 4 | 1 | 9  // 100% branch coverage at this point
-//        3 | 2 | 6 | 9  // error!
+    public static int sumBiggestPair(int a, int b, int c) {
+        int op1 = a;
+        int op2 = b;
+        if (c > Math.min(a, b)) {
+            op1 = c;
+            op2 = Math.max(a, b);
+        }
+        return op1 + op2;
     }
 
+    private MathUtil(){}
 }

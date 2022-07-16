@@ -23,25 +23,23 @@ repositories {
 }
 
 dependencies {
-    implementation "org.apache.groovy:groovy-all:$groovyVersion"
+    implementation "org.apache.groovy:groovy-test-junit5:$groovyVersion"
     testImplementation("org.spockframework:spock-core:$spockVersion") {
         transitive = false
     }
-//    implementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion") {
-//        exclude(group: 'org.apiguardian', module: 'apiguardian-api')
-//        exclude(group: 'org.junit.platform', module: 'junit-platform-commons')
-//    }
-//    testRuntimeOnly "org.junit.platform:junit-platform-engine:$junitPlatformVersion"
-//    testRuntimeOnly "org.junit.platform:junit-platform-launcher:$junitPlatformVersion"
 }
 
 pitest {
-    junit5PluginVersion = '0.15'
+    junit5PluginVersion = '1.0.0'
     timestampedReports = false
-    targetClasses = ['util.*']
-//    dependsOn 'compileGroovy'
+    // uncomment one of either the next two lines
+    targetClasses = ['util.bug.*']
+//    targetClasses = ['util.fix.*']
+    pitestVersion = '1.9.2'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+build.dependsOn('pitest')

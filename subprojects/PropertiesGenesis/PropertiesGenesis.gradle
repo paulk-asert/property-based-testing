@@ -20,13 +20,12 @@ repositories {
 }
 
 dependencies {
-    testImplementation project(':Celsius')
-    testImplementation "org.apache.groovy:groovy-all:$groovyVersion"
+    testImplementation "org.codehaus.groovy:groovy-test-junit5:$groovy3Version"
     testImplementation('com.nagternal:spock-genesis:0.6.0') {
         transitive = false
     }
     testRuntimeOnly 'com.github.mifmif:generex:1.0.2'
-    testImplementation("org.spockframework:spock-core:$spockVersion") {
+    testImplementation("org.spockframework:spock-core:2.1-groovy-3.0") {
         transitive = false
     }
 }

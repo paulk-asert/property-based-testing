@@ -13,13 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package util
+package util.bug
 
 import spock.lang.Specification
 
 class MathUtilSpec extends Specification {
-    def "sum of two biggest numbers"() {
+
+    def "sum of two biggest numbers"(int a, int b, int c, int d) {
         expect:
-        MathUtil.sumBiggestPair(2, 5, 3) == 8
+        MathUtil.sumBiggestPair(a, b, c) == d
+
+        where:
+        a | b | c | d
+        2 | 5 | 3 | 8
+        5 | 2 | 3 | 8  // 100% line coverage at this point
+        5 | 4 | 1 | 9  // 100% branch coverage at this point
     }
 }

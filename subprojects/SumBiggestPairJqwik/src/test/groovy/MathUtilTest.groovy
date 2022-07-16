@@ -24,14 +24,42 @@ import net.jqwik.api.constraints.IntRange
 import static util.MathUtil.sumBiggestPair
 
 class MathUtilTest {
+
+    @Property
+    void "result should be bigger than any individual and smaller than sum of all"(
+            @ForAll @IntRange(min = 0, max = 1000) Integer a,
+            @ForAll @IntRange(min = 0, max = 1000) Integer b,
+            @ForAll @IntRange(min = 0, max = 1000) Integer c) {
+        def result = sumBiggestPair(a, b, c)
+        assert [a, b, c].every { individual -> result >= individual }
+        assert result <= a + b + c
+    }
+
+    @Property
+    void "sum of any pair should not be greater than result"(
+            @ForAll @IntRange(min = 0, max = 1000) Integer a,
+            @ForAll @IntRange(min = 0, max = 1000) Integer b,
+            @ForAll @IntRange(min = 0, max = 1000) Integer c) {
+        def result = sumBiggestPair(a, b, c)
+        assert [a + b, b + c, c + a].every { sumOfPair -> result >= sumOfPair }
+    }
+
+    @Property
+    void "result should be the same as alternative oracle implementation with small ints"(
+            @ForAll @IntRange(min = 0, max = 1000) Integer a,
+            @ForAll @IntRange(min = 0, max = 1000) Integer b,
+            @ForAll @IntRange(min = 0, max = 1000) Integer c) {
+        assert sumBiggestPair(a, b, c) == [a+b, a+c, b+c].max()
+    }
+
     @Property
     void checkShort(@ForAll Short a, @ForAll Short b, @ForAll Short c) {
         assert sumBiggestPair(a, b, c) == [a+b, a+c, b+c].max()
     }
 
     @Property
-    @Disabled('Enable to explore int overflow scenario')
-    void checkInteger(@ForAll Integer a, @ForAll Integer b, @ForAll Integer c) {
+    @Disabled('result should be the same as alternative oracle implementation')
+    void "result should be the same as alternative oracle implementation"(@ForAll Integer a, @ForAll Integer b, @ForAll Integer c) {
         assert sumBiggestPair(a, b, c) == [a+b, a+c, b+c].max()
     }
 
@@ -60,4 +88,5 @@ class MathUtilTest {
         def (al, bl, cl) = [a, b, c]*.toLong()
         assert sumBiggestPair(a, b, c) == [al+bl, al+cl, bl+cl].max().toInteger()
     }
+
 }

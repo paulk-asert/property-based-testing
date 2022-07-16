@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//@Grab('net.jqwik:jqwik:1.3.7')
 
 import net.jqwik.api.*
 import net.jqwik.api.constraints.*
@@ -39,7 +38,7 @@ class MathProps {
 
     @Property
     void 'round up should be greater than round down'(@ForAll Double d) {
-        BigDecimal bd = new BigDecimal(d);
+        BigDecimal bd = new BigDecimal(d)
         def up = bd.setScale(2, RoundingMode.HALF_UP)
         def down = bd.setScale(2, RoundingMode.HALF_DOWN)
         assert up >= down

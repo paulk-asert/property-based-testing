@@ -23,13 +23,10 @@ import net.jqwik.api.constraints.IntRange
 
 import static net.jqwik.api.Arbitraries.maps
 
-// these tests pass but some values aren't as expected due to some Jsr308 limitations
 class Idempotent {
     @Property
-    void 'trim is idempotent'(
-            @ForAll String s,
-            @ForAll @IntRange(max=10) Integer i
-    ) {
+    void 'trim is idempotent'(@ForAll String s,
+                              @ForAll @IntRange(max = 10) Integer i) {
         def once = s.trim()
         def many = once
         i.times { many = many.trim() }
@@ -37,10 +34,8 @@ class Idempotent {
     }
 
     @Property
-    void 'unique is idempotent'(
-            @ForAll List<@IntRange(min=0, max=100) Integer> items,
-            @ForAll @IntRange(max=10) Integer i
-    ) {
+    void 'unique is idempotent'(@ForAll List<@IntRange(min = 0, max = 100) Integer> items,
+                                @ForAll @IntRange(max = 10) Integer i) {
         def once = items.toUnique()
         def many = once
         i.times { many = many.toUnique() }
@@ -48,11 +43,9 @@ class Idempotent {
     }
 
     @Property
-    void 'map putAll is idempotent'(
-            @ForAll('stringMap') Map<String, String> initial,
-            @ForAll('stringMap') Map<String, String> additions,
-            @ForAll @IntRange(max=10) Integer i
-    ) {
+    void 'map putAll is idempotent'(@ForAll('stringMap') Map<String, String> initial,
+                                    @ForAll('stringMap') Map<String, String> additions,
+                                    @ForAll @IntRange(max = 10) Integer i) {
         initial.putAll(additions)
         def saved = initial.clone()
         i.times { initial.putAll(additions) }
@@ -61,15 +54,13 @@ class Idempotent {
 
     @Provide
     Arbitrary<Map<String, String>> stringMap() {
-        return maps(Arbitraries.strings().alpha().ofMaxLength(5).unique(),
-                Arbitraries.strings().ofMaxLength(5))
+        maps(Arbitraries.strings().alpha().ofMaxLength(5),
+                Arbitraries.strings().ofMaxLength(5)).uniqueKeys(key -> key)
     }
 
     @Property
-    void 'sort is idempotent'(
-            @ForAll List<@IntRange(min=0, max=100) Integer> items,
-            @ForAll @IntRange(max=10) Integer i
-    ) {
+    void 'sort is idempotent'(@ForAll List<@IntRange(min = 0, max = 100) Integer> items,
+                              @ForAll @IntRange(max = 10) Integer i) {
         def once = items.toSorted()
         def many = once
         i.times { many = many.toSorted() }
